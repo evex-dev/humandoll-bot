@@ -1,3 +1,3 @@
 # humandoll-bot
 
-Discord Human Doll Bot
+Discord Human Doll Bot (markov)
