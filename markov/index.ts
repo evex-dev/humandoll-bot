@@ -47,7 +47,6 @@ export function generateMarkovChain(
           ?.[Math.floor(Math.random() * table["記号"].length)];
         if (symbol) {
           result.push(symbol);
-          break;
         }
       }
     }
