@@ -60,6 +60,9 @@ client.on("messageCreate", async (message) => {
     tokenized.map((
       token: Record<string, string | number>,
     ) => [token.surface_form, token.pos]),
+    {
+        "expireIn": 60 * 60 * 24 * 7
+    }
   );
 });
 
