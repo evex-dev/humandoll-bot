@@ -72,7 +72,9 @@ function getNextPos(
       return table["名詞"] ? "名詞" : "動詞";
     case "助動詞":
       return table["記号"] ? "記号" : "名詞";
+    // deno-lint-ignore no-case-declarations
     default:
-      return "記号";
+      const possibleWords = Object.keys(table);
+      return possibleWords[Math.floor(Math.random() * possibleWords.length)];
   }
 }
