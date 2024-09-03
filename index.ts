@@ -61,7 +61,7 @@ client.on("messageCreate", async (message) => {
       token: Record<string, string | number>,
     ) => [token.surface_form, token.pos]),
     {
-        "expireIn": 60 * 60 * 24 * 7
+        "expireIn": 1000 * 60 * 60 * 24 * 7
     }
   );
 });
