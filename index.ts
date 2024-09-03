@@ -1,6 +1,7 @@
 import "jsr:@std/dotenv/load";
 import { Client } from "npm:discord.js";
 import { isURL } from "./utils/isURL.ts";
+import { removeMention } from "./utils/removeMention.ts";
 import { Tokenizer } from "./tokenizer/index.ts";
 import { Database } from "./database/index.ts";
 
@@ -19,12 +20,31 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", async (message) => {
+    if (message.content === "マルコフ") {
+        const messages = await Database.list<[string, string]>({
+            "prefix": ["messages"],
+        });
+
+        const messageMap = new Map();
+
+        for await (const message of messages) {
+            messageMap.set(message.value[0], message.value[1]);
+        }
+
+        const generatedMessage = (() => "test")();
+
+        await message.reply(removeMention(generatedMessage));
+
+        return;
+    }
+
     if (
         message.content.length > 180 || message.content.length < 3 ||
         message.author.bot || isURL(message.content)
     ) {
         return;
     }
+
     const tokenized = await Tokenizer.tokenize(message.content);
 
     await Database.set(
@@ -33,14 +53,6 @@ client.on("messageCreate", async (message) => {
             token: Record<string, string | number>,
         ) => [token.surface_form, token.pos]),
     );
-
-    const list = (await Database.list({
-        "prefix": ["messages"],
-    }));
-
-    for await (const value of list) {
-        console.log(value);
-    }
 });
 
 client.login(env["BOT_TOKEN"]);
