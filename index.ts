@@ -5,6 +5,7 @@ const env = Deno.env.toObject();
 
 const client = new Client({
     "intents": [
+        "Guilds",
         "GuildMessages",
         "MessageContent"
     ]
