@@ -4,7 +4,10 @@ import { Client } from "npm:discord.js";
 const env = Deno.env.toObject();
 
 const client = new Client({
-    "intents": 8
+    "intents": [
+        "GuildMessages",
+        "MessageContent"
+    ]
 });
 
 client.on("ready", () => {
