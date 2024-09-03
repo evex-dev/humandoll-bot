@@ -30,7 +30,7 @@ export function generateMarkovChain(
     }
 
     const randomWord =
-      possibleWords[Math.floor(Math.random() * possibleWords.length)];
+      possibleWords[Math.floor(Math.random() * possibleWords.length ** 1.5)];
     result.push(randomWord);
     wordCount++;
 
