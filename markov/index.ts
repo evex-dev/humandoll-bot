@@ -34,7 +34,7 @@ export function generateMarkovChain(
     result.push(randomWord);
     wordCount++;
 
-    const stopProbability = Math.pow(1.5, wordCount);
+    const stopProbability = Math.pow(1.25, wordCount);
     if (Math.random() * 100 < stopProbability) {
       break;
     }
