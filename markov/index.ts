@@ -42,7 +42,7 @@ export function generateMarkovChain(
     currentPos = getNextPos(currentPos, table);
 
     if (currentPos === "助動詞" && table["記号"]) {
-      if (Math.random() < 0.25) {
+      if (Math.random() < 0.05) {
         const symbol = table["記号"]
           ?.[Math.floor(Math.random() * table["記号"].length)];
         if (symbol) {
